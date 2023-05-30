@@ -48,4 +48,21 @@ class StringCalculatorTest {
         assertEquals(3, stringCalculator.add("//;\\n1;2"));
     }
 
+    @Test
+    @DisplayName("negatives not allowed")
+    public void throwsOnNegativeNumber() {
+        assertThrows(IllegalArgumentException.class, ()-> {
+            stringCalculator.add("-3");
+        });
+    }
+
+    @Test
+    @DisplayName("negatives not allowed with numbers")
+    public void throwsOnNegativeNumbers() {
+        assertThrowsExactly(IllegalArgumentException.class, ()->{
+            stringCalculator.add("1,-3,5,-5,-13");
+            },"negative number: -3,-5,-13");
+    }
+
+
 }

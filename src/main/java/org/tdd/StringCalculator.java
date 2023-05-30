@@ -3,6 +3,9 @@ package org.tdd;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class StringCalculator implements AdditionCalculator{
 
     @Override
@@ -20,9 +23,12 @@ public class StringCalculator implements AdditionCalculator{
         return req.split(divider);
     }
     private static int sum(String[] numbers){
-        int sum = 0;
-        for(String number : numbers) sum += toInt(number);
-        return sum;
+        String negativeNumberSequence = Arrays.stream(numbers).mapToInt(Integer::parseInt).filter(n -> n < 0)
+                .mapToObj(Integer::toString)
+                .collect(Collectors.joining(","));
+        if (!negativeNumberSequence.isEmpty()) throw new IllegalArgumentException("negative number: " + negativeNumberSequence);
+
+        return Arrays.stream(numbers).mapToInt(Integer::parseInt).sum();
     }
     private static int toInt(String number){
         return Integer.parseInt(number);
