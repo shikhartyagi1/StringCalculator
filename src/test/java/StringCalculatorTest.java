@@ -22,4 +22,15 @@ class StringCalculatorTest {
         assertEquals(0, stringCalculator.add(""));
     }
 
+    @Test
+    @DisplayName("Test One Number")
+    public void testAddOneNumber() {
+        assertEquals(1, stringCalculator.add("1"));
+    }
+    @Test
+    @DisplayName("Test For Two Number")
+    public void testAddTwoNumber() {
+        assertEquals(3, stringCalculator.add("1,2"));
+    }
+
 }
