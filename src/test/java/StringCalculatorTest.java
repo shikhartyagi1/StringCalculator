@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.tdd.StringCalculator;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class StringCalculatorTest {
     StringCalculator stringCalculator;
@@ -44,13 +45,13 @@ class StringCalculatorTest {
     }
     @Test
     @DisplayName("Support different delimiters")
-    public void usesDelimiterSepcified(){
+    public void testUsesDelimiterSepcified(){
         assertEquals(3, stringCalculator.add("//;\\n1;2"));
     }
 
     @Test
     @DisplayName("negatives not allowed")
-    public void throwsOnNegativeNumber() {
+    public void testThrowsOnNegativeNumber() {
         assertThrows(IllegalArgumentException.class, ()-> {
             stringCalculator.add("-3");
         });
@@ -58,10 +59,15 @@ class StringCalculatorTest {
 
     @Test
     @DisplayName("negatives not allowed with numbers")
-    public void throwsOnNegativeNumbers() {
+    public void testThrowsOnNegativeNumbers() {
         assertThrowsExactly(IllegalArgumentException.class, ()->{
             stringCalculator.add("1,-3,5,-5,-13");
             },"negative number: -3,-5,-13");
+    }
+    @Test
+    @DisplayName("Bigger than 1000 should be ignored")
+    public void testNumberBiggerThan1000(){
+        assertEquals(2, stringCalculator.add("2,1001"));
     }
 
 

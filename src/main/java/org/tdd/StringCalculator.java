@@ -28,7 +28,7 @@ public class StringCalculator implements AdditionCalculator{
                 .collect(Collectors.joining(","));
         if (!negativeNumberSequence.isEmpty()) throw new IllegalArgumentException("negative number: " + negativeNumberSequence);
 
-        return Arrays.stream(numbers).mapToInt(Integer::parseInt).sum();
+        return Arrays.stream(numbers).mapToInt(Integer::parseInt).filter(n->n<=1000).sum();
     }
     private static int toInt(String number){
         return Integer.parseInt(number);
