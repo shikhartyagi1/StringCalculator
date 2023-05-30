@@ -9,6 +9,10 @@ public class StringCalculator implements AdditionCalculator{
     public int add(@NotNull String req) {
         if(req.equals("")) return 0;
         String delimiter = ",";
+        if(req.startsWith("//")){
+            delimiter = Character.toString(req.charAt(2));
+            req = req.substring(5);
+        }
         String numbers[] = splitNumbers(req, delimiter + "|\n");
         return sum(numbers);
     }
