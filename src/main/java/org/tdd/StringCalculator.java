@@ -1,15 +1,18 @@
 package org.tdd;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 public class StringCalculator implements AdditionCalculator{
 
     @Override
-    public int add(String req) {
+    public int add(@NotNull String req) {
         if(req.equals("")) return 0;
         String delimiter = ",";
         String numbers[] = splitNumbers(req, delimiter);
         return sum(numbers);
     }
-    private static String[] splitNumbers(String req, String divider){
+    private static String[] splitNumbers(@NotNull String req, String divider){
         return req.split(divider);
     }
     private static int sum(String[] numbers){

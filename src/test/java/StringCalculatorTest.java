@@ -32,5 +32,10 @@ class StringCalculatorTest {
     public void testAddTwoNumber() {
         assertEquals(3, stringCalculator.add("1,2"));
     }
+    @Test
+    @DisplayName("Test Multiple Numbers")
+    public void testAddMultipleNumber() {
+        assertEquals(10, stringCalculator.add("1,2,3,4"));
+    }
 
 }
