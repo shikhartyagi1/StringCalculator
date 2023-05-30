@@ -37,5 +37,10 @@ class StringCalculatorTest {
     public void testAddMultipleNumber() {
         assertEquals(10, stringCalculator.add("1,2,3,4"));
     }
+    @Test
+    @DisplayName("Test New Line")
+    public void testNewLine() {
+        assertEquals(10, stringCalculator.add("1\n2,3\n4"));
+    }
 
 }

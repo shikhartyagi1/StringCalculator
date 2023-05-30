@@ -9,7 +9,7 @@ public class StringCalculator implements AdditionCalculator{
     public int add(@NotNull String req) {
         if(req.equals("")) return 0;
         String delimiter = ",";
-        String numbers[] = splitNumbers(req, delimiter);
+        String numbers[] = splitNumbers(req, delimiter + "|\n");
         return sum(numbers);
     }
     private static String[] splitNumbers(@NotNull String req, String divider){
